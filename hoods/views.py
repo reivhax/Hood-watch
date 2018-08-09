@@ -19,3 +19,16 @@ def myprofile(request):
 @login_required
 def myhood(request):
     return render(request, 'myhood.html')
+@login_required
+def create_neighbourhood(request):
+    if request.method == 'POST':
+        hood_form = HoodForm(request.POST, request.FILES)
+        if hood_form.is_valid():
+            hood = hood_form.save(commit=False)
+            hood.admin = request.user.profile
+            request.user.profile.save()
+            hood.save()
+            return redirect(neighbourhoods)
+    else:
+        hood_form = HoodForm()
+    return render(request, 'newneighbourhood.html', locals())
