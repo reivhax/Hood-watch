@@ -10,5 +10,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     Name = models.TextField(default="Anonymous")
+    profile_picture = models.ImageField(upload_to='users/', default='users/user.png')
+    bio = models.TextField(default="I'm using hoodwatch")
     def __str__(self):
         return f'Profile {self.user.username}'
