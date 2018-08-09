@@ -10,3 +10,12 @@ from .models import Neighbourhood
 def home(request):
     return redirect(myprofile);
 
+
+@login_required
+def myprofile(request):
+    return render(request, 'myprofile.html')
+
+
+@login_required
+def myhood(request):
+    return render(request, 'myhood.html')
