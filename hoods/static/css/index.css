@@ -1,0 +1,127 @@
+body{
+	background-color: rgba(39, 54, 54, 0.88) !important;
+	margin-top: 30px;
+    color: white!important;
+}
+.mainform{
+  background-color: #343a40;
+  max-width: 325px;
+  float: left;
+  max-height: 473px;
+  position: absolute;
+  border: solid 1px #ddd;
+  display: inline-table;
+  top: 0;
+  bottom: 0;
+  padding: 20px;
+  left: 0;
+  right: 0;
+  padding-bottom: 0;
+  margin: auto;
+  text-align: center;
+}
+small{
+    display: none!important;
+}
+.invite{
+    line-height: 20px;
+    font-size: 17px;
+    margin: 0 40px 10px;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 0;
+    border: 0;
+}
+.alert{
+    display: none;
+}
+#search:focus{
+    color: #dddddd;
+    background-color: transparent;
+    border-color: #4da7a3;
+}
+#search{
+    color: #6c757d;
+    background-color: transparent;
+    border-color: #6c757d;
+}
+@media(max-width: 768px){
+    #sidebar[class*="side"]{
+        display: block!important;
+        position: absolute!important;
+        z-index: 1000;
+        width: 250px!important;
+        padding: .5rem!important;
+    }
+}
+@media(max-width: 768px){
+    #sidebar[class~="d-non"]{
+        width: 0;
+        padding: 0;
+    }
+}
+#sidebar{
+    overflow-y: hidden;
+    height: calc(100vh - 56px);
+    width: 250px;
+    overflow-x: hidden;
+    background: #161e26;
+    position: sticky;
+    padding: .5rem;
+    max-width: 230px;
+}
+.nav-fill .nav-item{
+    margin-top: 10%;
+}
+.lgout{
+    position: absolute;
+    width: calc(100% - 16px);
+    bottom: 7px;
+}
+input[class="form-control"]
+,textarea {
+    background: #00000045!important;
+    color: #ddd!important;
+    border-color: white!important;
+}
+.group{
+    height: 350px;
+    background: transparent!important;
+    border: none!important;
+}
+.group:hover > div{
+    box-shadow: 0px 0px 6px 0px #3b8bff;
+}
+.imageblock{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 60%;
+    background-color: black;
+}
+.joinbtn{
+    margin-top: 10px;
+}
+#upl-btn{
+    height: 42px;
+    width: auto;
+    font-size: 20pt;
+}
+#upl-btn:hover> .hoodadd{
+    width: 150px;
+}
+.hoodadd{
+    vertical-align: top;
+    margin-top: -6px;
+    width: 0;
+    overflow-x: hidden;
+    transition: 450ms;
+}
+.cancel{
+    color: red;
+    background-color: #161e26;
+    font-size: 18pt;
+}
+.lastbtn{
+    outline: none!important;
+}

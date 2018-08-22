@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div id="userdetails" class="row col-12 mb-2 py-2">
+    <div class="mx-4 float-left">
+        <img src="{{request.user.profile.profile_picture.url}}" width="200" height="200" class="img-rounded border userimage">
+    </div>
+    <div class="float-left mx-4">
+        <div style="margin-bottom: 20px;">
+            <h3 style="vertical-align: middle">{{request.user.username}}</h3>
+            <a href="{%  url 'create' %}">
+                <button class="editbtn btn btn-sm btn-default">
+                    <span class="edittext">Edit Profile</span>
+                </button>
+            </a>
+        </div>
+        <div>
+        <strong>{{ request.user.profile.Name }}</strong>
+        </div>
+        <div><span>{{ request.user.profile.bio }}</span></div>
+        <div>&zwnj;</div>
+        <div>Hood : <span>{{ request.user.profile.neighbourhood.Name }}</span></div>
+        </div>
+</div>
+<div id="myhoods">
+<h5 class="border-bottom">Hoods Created</h5>
+{% for neighbourhood in request.user.profile.hoods.all %}
+<div class="card col-12 col-sm-6 col-lg-4 float-left p-1 group">
+ <div class="bg-dark" style="height: 100%;">
+     <div style='background-image: url("{{ neighbourhood.display.url }}")' class="imageblock">
+         <i class="fa fa-times float-right cancel p-1" aria-hidden="true" data-target="#confirm{{ neighbourhood.id }}" data-toggle="modal"></i>
+     </div>
+      <div class="card-body text-center">
+      <div class="text-left">
+          <h4 class="card-title">
+              <strong>{{ neighbourhood.Name }}</strong>
+              <span class="float-right">{{ neighbourhood.people.count }}</span>
+          </h4>
+          <div  class="card-text small">{{ neighbourhood.description }}</div>
+      </div>
+      </div>
+ </div>
+</div>
+
+<div class="modal fade" id="confirm{{ neighbourhood.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+               Confirmation
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete {{ neighbourhood.Name }} with {{ neighbourhood.people.count }} people ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok" href="{% url 'deletehood' neigh_id=neighbourhood.id %}"> Yes. Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

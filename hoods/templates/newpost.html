@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<h2 class="text-center">Create new Post on {{ request.user.profile.neighbourhood.Name }}</h2>
+<form method="post">
+  {% csrf_token %}
+  {% bootstrap_form post_form %}
+  <div class="form-group" style="text-align: center">
+    <input type="submit" class="btn btn-outline-primary" value="Save Post">
+  </div>
+</form>
+{% endblock %}

@@ -23,3 +23,22 @@ class HoodForm(forms.ModelForm):
         model = Neighbourhood
         exclude = ('admin',)
 
+
+class BizForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['Name'].widget = forms.TextInput()
+
+    class Meta:
+        model = Business
+        exclude = ('owner','neighbourhood')
+
+
+class PostForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['Text'].widget = forms.TextInput()
+
+    class Meta:
+        model = Post
+        exclude = ('user', 'neighbourhood')

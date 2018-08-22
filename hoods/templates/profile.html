@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<h2 class="text-center">Update Your Profile</h2>
+<form  action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form profileform %}
+  <div class="form-group" style="text-align: center">
+    <input type="submit" class="btn btn-outline-primary" value="Update Profile">
+  </div>
+</form>
+{% endblock %}

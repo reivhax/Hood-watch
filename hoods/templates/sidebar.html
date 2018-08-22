@@ -1,0 +1,18 @@
+<nav class="d-non d-md-block col-md-3" id="sidebar">
+  <ul class="nav nav-pills nav-fill flex-column">
+    <li class="nav-item">
+        <button class="btn btn-block btn-outline-success navigation" route="/myaccount/">My account</button>
+    </li>
+    <li class="nav-item">
+        <button class="btn btn-block btn-outline-success navigation" route="/hoods/">Neighbourhoods</button>
+    </li>
+  {% if request.user.profile.neighbourhood %}
+      {% with request.user.profile.neighbourhood as hood %}
+        <li class="nav-item">
+            <button class="btn btn-block btn-outline-success navigation" route="/myhood/">{{ hood.Name }} hood</button>
+        </li>
+      {% endwith %}
+  {% endif %}
+  </ul>
+  <a class="btn btn-outline-danger mx-auto d-block lgout" href="/accounts/logout">Log out</a>
+</nav>

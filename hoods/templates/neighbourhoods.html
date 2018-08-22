@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+    <div class="py-1">
+        <button  id="upl-btn" class="btn btn-success navigation" route="{% url 'createhood' %}">
+            <i class="fas fa-plus float-left"></i>
+            <div class="hoodadd">New hood</div>
+        </button>
+    </div>
+<div class="py-1">
+    {% for neighbourhood in hoods %}
+    <div class="card col-12 col-sm-6 col-lg-4 float-left p-1 group">
+     <div class="bg-dark" style="height: 100%;">
+         <div style='background-image: url("{{ neighbourhood.display.url }}")' class="imageblock"></div>
+          <div class="card-body text-center">
+          <div class="text-left">
+              <h4 class="card-title">
+                  <strong>{{ neighbourhood.Name }}</strong>
+                  <span class="float-right">{{ neighbourhood.people.count }}</span>
+              </h4>
+              <div  class="card-text small">{{ neighbourhood.description }}</div>
+          </div>
+          {% if not request.user.profile.neighbourhood %}
+          <button class="btn btn-outline-primary joinbtn navigation" route="{% url 'join' neigh_id=neighbourhood.id %}" >Join Group</button>
+          {% elif request.user.profile.neighbourhood == neighbourhood %}
+          <button class="btn btn-outline-danger joinbtn navigation" route="{% url 'left' neigh_id=neighbourhood.id %}" >Leave Group</button>
+          {% endif %}
+          </div>
+     </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
